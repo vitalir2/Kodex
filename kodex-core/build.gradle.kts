@@ -11,11 +11,7 @@ repositories {
 kotlin {
     jvm()
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(project(":kodex-core"))
-            }
-        }
+        val commonMain by getting
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
