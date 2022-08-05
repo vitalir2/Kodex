@@ -1,6 +1,8 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
-    kotlin("jvm") version "1.6.20" apply false
-    kotlin("multiplatform") version "1.6.20" apply false
+    kotlin("jvm") version libs.versions.kotlin apply false
+    kotlin("multiplatform") version libs.versions.kotlin apply false
 }
 
 group = "io.vitalir"
