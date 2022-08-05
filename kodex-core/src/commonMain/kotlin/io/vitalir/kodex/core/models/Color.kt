@@ -2,5 +2,5 @@ package io.vitalir.kodex.core.models
 
 data class Color(
     override val name: String,
-    val rgb: Int
+    val rgb: Int,
 ) : Resource
