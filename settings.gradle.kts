@@ -12,11 +12,24 @@ include(":kodex-gen-android")
 include(":kodex-manager")
 include(":kodex-core")
 
+object VersionNames {
+    const val kotlin = "kotlin"
+    object Kotlinx {
+        const val serialization = "kotlinx-serialization"
+    }
+}
+
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("kotlin", "1.7.10")
-            version("kotlinx-serialization", "1.4.0-RC")
+            version(VersionNames.kotlin, "1.7.10")
+            version(VersionNames.Kotlinx.serialization, "1.4.0-RC")
+
+            alias("kotlinx-serialization").toPluginId("plugin.serialization")
+                .versionRef(VersionNames.kotlin)
+
+            alias("kotlinx-serialization-json").to("org.jetbrains.kotlinx", "kotlinx-serialization-json")
+                .versionRef(VersionNames.Kotlinx.serialization)
         }
     }
 }

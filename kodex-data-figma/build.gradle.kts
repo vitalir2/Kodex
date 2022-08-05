@@ -1,5 +1,8 @@
+@file:Suppress("UnstableApiUsage")
+
 plugins {
     kotlin("multiplatform")
+    kotlin(libs.plugins.kotlinx.serialization.get().pluginId)
 }
 
 group = "io.vitalir"
@@ -14,6 +17,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":kodex-data-api"))
+                implementation(libs.kotlinx.serialization.json)
             }
         }
         val commonTest by getting {
