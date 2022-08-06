@@ -6,16 +6,13 @@ import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
-class FigmaDataSource {
-
-    // TODO @vitalir: Pass by constructor
-    private val client by lazy { HttpClient(CIO) }
-
-    // TODO @vitalir: Pass by constructor
-    private val figmaToken = ""
+class FigmaDataSource(
+    private val networkClient: HttpClient,
+    private val figmaToken: String,
+) {
 
     suspend fun getFile(fileKey: String, queryParams: GetFileQueryParams): GetFileRsp {
-        val response = client.get {
+        val response = networkClient.get {
             url {
                 protocol = URLProtocol.HTTPS
                 host = FIGMA_API_HOST
