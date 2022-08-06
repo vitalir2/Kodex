@@ -3,6 +3,7 @@
 plugins {
     kotlin("multiplatform")
     kotlin(libs.plugins.kotlinx.serialization.get().pluginId)
+    id(libs.plugins.kotest.plugin.get().pluginId)
 }
 
 group = "io.vitalir"
@@ -25,7 +26,13 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
-                implementation(kotlin("test"))
+                implementation(libs.kotest.framework)
+                implementation(libs.kotest.assertions)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.kotest.runner.jvm)
             }
         }
     }
@@ -36,3 +43,19 @@ tasks.register<Wrapper>("wrapper") {
 }
 
 tasks.register("prepareKotlinBuildScriptModel") {}
+
+tasks.named<Test>("jvmTest") {
+    useJUnitPlatform()
+    filter {
+        isFailOnNoMatchingTests = false
+    }
+    testLogging {
+        showExceptions = true
+        showStandardStreams = true
+        events = setOf(
+            org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
+        )
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
+}

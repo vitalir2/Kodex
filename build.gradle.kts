@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version libs.versions.kotlin apply false
     kotlin("multiplatform") version libs.versions.kotlin apply false
     kotlin(libs.plugins.kotlinx.serialization.get().pluginId) version libs.versions.kotlin apply false
+    id(libs.plugins.kotest.plugin.get().pluginId) version libs.versions.kotest.plugin apply false
 }
 
 group = "io.vitalir"

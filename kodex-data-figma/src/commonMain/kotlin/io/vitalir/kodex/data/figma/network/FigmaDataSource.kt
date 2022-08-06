@@ -30,6 +30,6 @@ class FigmaDataSource(
     }
 
     companion object {
-        private const val FIGMA_API_HOST = "https://api.figma.com"
+        private const val FIGMA_API_HOST = "api.figma.com"
     }
 }

@@ -16,6 +16,8 @@ object VersionNames {
     const val kotlin = "kotlin"
     const val ktor = "ktor"
     const val napier = "napier"
+    const val kotest = "kotest"
+    const val kotestPlugin = "kotest-plugin"
     object Kotlinx {
         const val serialization = "kotlinx-serialization"
     }
@@ -43,6 +45,25 @@ dependencyResolutionManagement {
 
             alias("napier").to("io.github.aakira", "napier")
                 .versionRef(VersionNames.napier)
+
+            kotest()
         }
     }
+}
+
+fun VersionCatalogBuilder.kotest() {
+    version(VersionNames.kotest, "5.4.0")
+    version(VersionNames.kotestPlugin, "5.0.2")
+
+    alias("kotest-plugin").toPluginId("io.kotest.multiplatform")
+        .versionRef(VersionNames.kotestPlugin)
+
+    alias("kotest-framework").to("io.kotest", "kotest-framework-engine")
+        .versionRef(VersionNames.kotest)
+
+    alias("kotest-assertions").to("io.kotest", "kotest-assertions-core")
+        .versionRef(VersionNames.kotest)
+
+    alias("kotest-runner-jvm").to("io.kotest", "kotest-runner-junit5")
+        .versionRef(VersionNames.kotest)
 }
