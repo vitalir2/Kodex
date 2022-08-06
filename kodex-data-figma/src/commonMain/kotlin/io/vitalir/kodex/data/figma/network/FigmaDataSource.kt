@@ -1,8 +1,8 @@
 package io.vitalir.kodex.data.figma.network
 
+import io.github.aakira.napier.Napier
 import io.ktor.client.*
 import io.ktor.client.call.*
-import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
@@ -26,8 +26,7 @@ class FigmaDataSource(
                 append("X-FIGMA-TOKEN", figmaToken)
             }
         }
-        // TODO @vitalir: Add logger
-        return response.body<GetFileRsp>().also { println(it.name) }
+        return response.body<GetFileRsp>().also { Napier.d("Got file with name=${it.name}") }
     }
 
     companion object {

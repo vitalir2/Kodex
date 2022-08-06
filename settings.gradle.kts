@@ -15,6 +15,7 @@ include(":kodex-core")
 object VersionNames {
     const val kotlin = "kotlin"
     const val ktor = "ktor"
+    const val napier = "napier"
     object Kotlinx {
         const val serialization = "kotlinx-serialization"
     }
@@ -26,6 +27,7 @@ dependencyResolutionManagement {
             version(VersionNames.kotlin, "1.7.10")
             version(VersionNames.Kotlinx.serialization, "1.4.0-RC")
             version(VersionNames.ktor, "2.0.3")
+            version(VersionNames.napier, "2.6.1")
 
             alias("kotlinx-serialization").toPluginId("plugin.serialization")
                 .versionRef(VersionNames.kotlin)
@@ -38,6 +40,9 @@ dependencyResolutionManagement {
 
             alias("ktor-client-cio").to("io.ktor", "ktor-client-cio")
                 .versionRef(VersionNames.ktor)
+
+            alias("napier").to("io.github.aakira", "napier")
+                .versionRef(VersionNames.napier)
         }
     }
 }
