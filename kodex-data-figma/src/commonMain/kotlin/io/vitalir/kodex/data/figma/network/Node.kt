@@ -17,9 +17,183 @@ sealed class Node {
 
 @Serializable
 @SerialName("DOCUMENT")
-class Document(
+class DocumentNode(
     override val id: String,
     override val name: String,
-    override val visible: Boolean,
+    override val visible: Boolean = true,
     val children: List<Node>,
+) : Node()
+
+@Serializable
+@SerialName("CANVAS")
+data class CanvasNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+    val children: List<Node>,
+    val backgroundColor: Color,
+    val flowStartingPoints: List<FlowStartingPoint>,
+    val exportSettings: List<ExportSetting> = emptyList(),
+) : Node()
+
+@Serializable
+@SerialName("FRAME")
+data class FrameNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+    val children: List<Node>,
+    val locked: Boolean = false,
+    val fills: List<Paint> = emptyList(),
+    val strokes: List<Paint> = emptyList(),
+    val strokeWeight: Double,
+    val strokeAlign: String,
+    val cornerRadius: Double? = null,
+    val rectangleCornerRadii: List<Double> = List(FOUR_CORNERS) { cornerRadius ?: 0.0 },
+    val exportSettings: List<ExportSetting> = emptyList(),
+    val blendMode: BlendMode,
+    val preserveRatio: Boolean = false,
+    val constraints: LayoutConstraint,
+    val layoutAlign: String? = null,
+    val opacity: Double = 1.0,
+    val clipsContent: Boolean,
+    val paddingLeft: Double = 0.0,
+    val paddingRight: Double = 0.0,
+    val paddingTop: Double = 0.0,
+    val paddingBottom: Double = 0.0,
+    val horizontalPadding: Double = 0.0,
+    val verticalPadding: Double = 0.0,
+    val itemSpacing: Double = 0.0,
+    val isMask: Boolean = false,
+    val isMaskOutline: Boolean = false,
+) : Node()
+
+@Serializable
+@SerialName("GROUP")
+data class GroupNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+    val children: List<Node>,
+    val locked: Boolean = false,
+    val fills: List<Paint> = emptyList(),
+    val strokes: List<Paint> = emptyList(),
+    val strokeWeight: Double,
+    val strokeAlign: String,
+    val cornerRadius: Double? = null,
+    val rectangleCornerRadii: List<Double> = List(FOUR_CORNERS) { cornerRadius ?: 0.0 },
+    val exportSettings: List<ExportSetting> = emptyList(),
+    val blendMode: BlendMode,
+    val preserveRatio: Boolean = false,
+    val constraints: LayoutConstraint,
+    val layoutAlign: String? = null,
+    val opacity: Double = 1.0,
+    val clipsContent: Boolean,
+    val paddingLeft: Double = 0.0,
+    val paddingRight: Double = 0.0,
+    val paddingTop: Double = 0.0,
+    val paddingBottom: Double = 0.0,
+    val horizontalPadding: Double = 0.0,
+    val verticalPadding: Double = 0.0,
+    val itemSpacing: Double = 0.0,
+    val isMask: Boolean = false,
+    val isMaskOutline: Boolean = false,
+) : Node()
+
+private const val FOUR_CORNERS = 4
+
+@Serializable
+@SerialName("VECTOR")
+data class VectorNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("BOOLEAN_OPERATION")
+data class BooleanOperationNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("STAR")
+data class StarNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("LINE")
+data class LineNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("ELLIPSE")
+data class EllipseNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("REGULAR_POLYGON")
+data class RegularPolygonNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("RECTANGLE")
+data class RectangleNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("SLICE")
+data class SliceNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("TEXT")
+data class TextNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("COMPONENT")
+data class NodeComponentNode(
+    override val id: String = "",
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("COMPONENT_SET")
+data class NodeComponentSetNode(
+    override val id: String = "",
+    override val name: String,
+    override val visible: Boolean = true,
+) : Node()
+
+@Serializable
+@SerialName("INSTANCE")
+data class InstanceNode(
+    override val id: String,
+    override val name: String,
+    override val visible: Boolean = true,
 ) : Node()

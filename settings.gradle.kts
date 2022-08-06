@@ -43,6 +43,12 @@ dependencyResolutionManagement {
             alias("ktor-client-cio").to("io.ktor", "ktor-client-cio")
                 .versionRef(VersionNames.ktor)
 
+            alias("ktor-client-content-negotiation").to("io.ktor", "ktor-client-content-negotiation")
+                .versionRef(VersionNames.ktor)
+
+            alias("ktor-serialization-kotlinx-json").to("io.ktor", "ktor-serialization-kotlinx-json")
+                .versionRef(VersionNames.ktor)
+
             alias("napier").to("io.github.aakira", "napier")
                 .versionRef(VersionNames.napier)
 
