@@ -4,8 +4,8 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.vitalir.kodex.core.common.getEnv
-import io.vitalir.kodex.data.figma.network.GetFileRequest
-import io.vitalir.kodex.data.figma.network.GetFileResponse
+import io.vitalir.kodex.data.figma.network.GetFileNodesRequest
+import io.vitalir.kodex.data.figma.network.GetFileNodesResponse
 import io.vitalir.kodex.data.figma.network.GetFileStylesRequest
 import io.vitalir.kodex.data.figma.network.GetFileStylesResponse
 import io.vitalir.kodex.data.figma.network.common.NetworkDataSource
@@ -21,8 +21,8 @@ class FigmaDataSourceTest : StringSpec() {
     )
     init {
         "should get successful response when will get nodes by a valid file key" {
-            val response = figmaDataSource.execute<GetFileResponse>(
-                GetFileRequest(
+            val response = figmaDataSource.execute<GetFileNodesResponse>(
+                GetFileNodesRequest(
                     fileKey = figmaTestData.fileKey,
                     nodeIds = emptyList()
                 )

@@ -5,22 +5,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Paint(
     val type: String,
+    val color: Color,
+    val opacity: Double,
 )
 
-@Serializable
-data class FlowStartingPoint(
-    val nodeId: String,
-)
-
-@Serializable
-data class ExportSetting(
-    val suffix: String,
-)
-
-@Serializable
-data class LayoutConstraint(
-    val vertical: String,
-)
 @Serializable
 data class Color(
     val r: Double,
@@ -28,25 +16,3 @@ data class Color(
     val b: Double,
     val a: Double,
 )
-
-enum class BlendMode {
-    PASS_THROUGH,
-    NORMAL,
-    DARKEN,
-    MULTIPLY,
-    LINEAR_BURN,
-    COLOR_BURN,
-    LIGHTEN,
-    SCREEN,
-    LINEAR_DODGE,
-    COLOR_DODGE,
-    OVERLAY,
-    SOFT_LIGHT,
-    HARD_LIGHT,
-    DIFFERENCE,
-    EXCLUSION,
-    HUE,
-    SATURATION,
-    COLOR,
-    LUMINOSITY,
-}

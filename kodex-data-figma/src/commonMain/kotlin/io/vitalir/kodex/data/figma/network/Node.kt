@@ -21,8 +21,8 @@ internal class DocumentNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
-    val children: List<Node>,
-) : Node()
+    override val children: List<Node>,
+) : Node(), NodeWithChildren
 
 @Serializable
 @SerialName("CANVAS")
@@ -30,11 +30,8 @@ internal data class CanvasNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
-    val children: List<Node>,
-    val backgroundColor: Color,
-    val flowStartingPoints: List<FlowStartingPoint>,
-    val exportSettings: List<ExportSetting> = emptyList(),
-) : Node()
+    override val children: List<Node>,
+) : Node(), NodeWithChildren
 
 @Serializable
 @SerialName("FRAME")
@@ -42,31 +39,9 @@ internal data class FrameNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
-    val children: List<Node>,
-    val locked: Boolean = false,
+    override val children: List<Node>,
     val fills: List<Paint> = emptyList(),
-    val strokes: List<Paint> = emptyList(),
-    val strokeWeight: Double,
-    val strokeAlign: String,
-    val cornerRadius: Double? = null,
-    val rectangleCornerRadii: List<Double> = List(FOUR_CORNERS) { cornerRadius ?: 0.0 },
-    val exportSettings: List<ExportSetting> = emptyList(),
-    val blendMode: BlendMode,
-    val preserveRatio: Boolean = false,
-    val constraints: LayoutConstraint,
-    val layoutAlign: String? = null,
-    val opacity: Double = 1.0,
-    val clipsContent: Boolean,
-    val paddingLeft: Double = 0.0,
-    val paddingRight: Double = 0.0,
-    val paddingTop: Double = 0.0,
-    val paddingBottom: Double = 0.0,
-    val horizontalPadding: Double = 0.0,
-    val verticalPadding: Double = 0.0,
-    val itemSpacing: Double = 0.0,
-    val isMask: Boolean = false,
-    val isMaskOutline: Boolean = false,
-) : Node()
+) : Node(), NodeWithChildren
 
 @Serializable
 @SerialName("GROUP")
@@ -74,33 +49,9 @@ internal data class GroupNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
-    val children: List<Node>,
-    val locked: Boolean = false,
+    override val children: List<Node>,
     val fills: List<Paint> = emptyList(),
-    val strokes: List<Paint> = emptyList(),
-    val strokeWeight: Double,
-    val strokeAlign: String,
-    val cornerRadius: Double? = null,
-    val rectangleCornerRadii: List<Double> = List(FOUR_CORNERS) { cornerRadius ?: 0.0 },
-    val exportSettings: List<ExportSetting> = emptyList(),
-    val blendMode: BlendMode,
-    val preserveRatio: Boolean = false,
-    val constraints: LayoutConstraint,
-    val layoutAlign: String? = null,
-    val opacity: Double = 1.0,
-    val clipsContent: Boolean,
-    val paddingLeft: Double = 0.0,
-    val paddingRight: Double = 0.0,
-    val paddingTop: Double = 0.0,
-    val paddingBottom: Double = 0.0,
-    val horizontalPadding: Double = 0.0,
-    val verticalPadding: Double = 0.0,
-    val itemSpacing: Double = 0.0,
-    val isMask: Boolean = false,
-    val isMaskOutline: Boolean = false,
-) : Node()
-
-private const val FOUR_CORNERS = 4
+) : Node(), NodeWithChildren
 
 @Serializable
 @SerialName("VECTOR")
@@ -197,3 +148,8 @@ internal data class InstanceNode(
     override val name: String,
     override val visible: Boolean = true,
 ) : Node()
+
+internal interface NodeWithChildren {
+
+    val children: List<Node>
+}
