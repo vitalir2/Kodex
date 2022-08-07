@@ -7,8 +7,8 @@ plugins {
     kotlin("jvm")
 }
 
-group = "me.vitalir"
-version = "1.0-SNAPSHOT"
+group = "io.vitalir"
+version = "0.0.1-alpha"
 
 repositories {
     mavenCentral()
@@ -18,7 +18,7 @@ gradlePlugin {
     plugins {
         create("kodex-figma") {
             id = "io.vitalir.kodex.figma"
-            implementationClass = "io.vitalir.kodex.gradle.plugin.figma.FigmaKodexPlugin"
+            implementationClass = "io.vitalir.kodex.gradle.plugin.figma.KodexFigmaPlugin"
         }
     }
 }
