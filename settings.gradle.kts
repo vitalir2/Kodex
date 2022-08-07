@@ -4,7 +4,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 
 rootProject.name = "kodex"
 
-include(":kodex-plugin")
+include(":kodex-gradle-plugin-figma")
 include(":kodex-data-api")
 include(":kodex-data-figma")
 include(":kodex-gen-api")
