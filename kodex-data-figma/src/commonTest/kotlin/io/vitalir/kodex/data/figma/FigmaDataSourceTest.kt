@@ -1,14 +1,13 @@
 package io.vitalir.kodex.data.figma
 
 import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.shouldBe
-import io.ktor.client.*
-import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.serialization.kotlinx.json.*
-import io.vitalir.kodex.data.figma.network.FigmaDataSource
-import io.vitalir.kodex.data.figma.network.GetFileQueryParams
-import kotlinx.serialization.json.Json
+import io.kotest.matchers.booleans.shouldBeTrue
+import io.kotest.matchers.nulls.shouldNotBeNull
+import io.vitalir.kodex.data.figma.network.GetFileRequest
+import io.vitalir.kodex.data.figma.network.GetFileResponse
+import io.vitalir.kodex.data.figma.network.common.NetworkDataSource
+import io.vitalir.kodex.data.figma.network.common.execute
+import io.vitalir.kodex.data.figma.network.extension.createFigmaExportHttpClient
 
 // TODO @vitalir: Get some variables from system env
 class FigmaDataSourceTest : StringSpec() {
@@ -18,23 +17,17 @@ class FigmaDataSourceTest : StringSpec() {
             val fileKey = ""
             check(figmaToken.isNotBlank()) { "You should set figma token" }
             check(fileKey.isNotBlank()) { "You should set file key" }
-            val figmaDataSource = FigmaDataSource(
-                networkClient = HttpClient(CIO) {
-                    install(ContentNegotiation) {
-                        json(
-                            Json {
-                                ignoreUnknownKeys = true
-                            }
-                        )
-                    }
-                },
-                figmaToken = figmaToken,
+            val figmaDataSource = NetworkDataSource(
+                client = createFigmaExportHttpClient(figmaToken),
             )
-            val response = figmaDataSource.getFile(
-                fileKey = fileKey,
-                queryParams = GetFileQueryParams("", 2U),
+            val response = figmaDataSource.execute<GetFileResponse>(
+                GetFileRequest(
+                    fileId = fileKey,
+                    nodeIds = emptyList()
+                )
             )
-            response.name.isEmpty() shouldBe false
+            response.isSuccess.shouldBeTrue()
+            response.getOrNull().shouldNotBeNull()
         }
     }
 }

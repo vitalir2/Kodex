@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
  * For more information, see [Figma API docs](https://www.figma.com/developers/api#files)
  */
 @Serializable
-sealed class Node {
+internal sealed class Node {
     abstract val id: String
     abstract val name: String
     abstract val visible: Boolean
@@ -17,7 +17,7 @@ sealed class Node {
 
 @Serializable
 @SerialName("DOCUMENT")
-class DocumentNode(
+internal class DocumentNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -26,7 +26,7 @@ class DocumentNode(
 
 @Serializable
 @SerialName("CANVAS")
-data class CanvasNode(
+internal data class CanvasNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -38,7 +38,7 @@ data class CanvasNode(
 
 @Serializable
 @SerialName("FRAME")
-data class FrameNode(
+internal data class FrameNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -70,7 +70,7 @@ data class FrameNode(
 
 @Serializable
 @SerialName("GROUP")
-data class GroupNode(
+internal data class GroupNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -104,7 +104,7 @@ private const val FOUR_CORNERS = 4
 
 @Serializable
 @SerialName("VECTOR")
-data class VectorNode(
+internal data class VectorNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -112,7 +112,7 @@ data class VectorNode(
 
 @Serializable
 @SerialName("BOOLEAN_OPERATION")
-data class BooleanOperationNode(
+internal data class BooleanOperationNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -120,7 +120,7 @@ data class BooleanOperationNode(
 
 @Serializable
 @SerialName("STAR")
-data class StarNode(
+internal data class StarNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -128,7 +128,7 @@ data class StarNode(
 
 @Serializable
 @SerialName("LINE")
-data class LineNode(
+internal data class LineNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -136,7 +136,7 @@ data class LineNode(
 
 @Serializable
 @SerialName("ELLIPSE")
-data class EllipseNode(
+internal data class EllipseNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -144,7 +144,7 @@ data class EllipseNode(
 
 @Serializable
 @SerialName("REGULAR_POLYGON")
-data class RegularPolygonNode(
+internal data class RegularPolygonNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -152,7 +152,7 @@ data class RegularPolygonNode(
 
 @Serializable
 @SerialName("RECTANGLE")
-data class RectangleNode(
+internal data class RectangleNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -160,7 +160,7 @@ data class RectangleNode(
 
 @Serializable
 @SerialName("SLICE")
-data class SliceNode(
+internal data class SliceNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -168,7 +168,7 @@ data class SliceNode(
 
 @Serializable
 @SerialName("TEXT")
-data class TextNode(
+internal data class TextNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,
@@ -176,7 +176,7 @@ data class TextNode(
 
 @Serializable
 @SerialName("COMPONENT")
-data class NodeComponentNode(
+internal data class NodeComponentNode(
     override val id: String = "",
     override val name: String,
     override val visible: Boolean = true,
@@ -184,7 +184,7 @@ data class NodeComponentNode(
 
 @Serializable
 @SerialName("COMPONENT_SET")
-data class NodeComponentSetNode(
+internal data class NodeComponentSetNode(
     override val id: String = "",
     override val name: String,
     override val visible: Boolean = true,
@@ -192,7 +192,7 @@ data class NodeComponentSetNode(
 
 @Serializable
 @SerialName("INSTANCE")
-data class InstanceNode(
+internal data class InstanceNode(
     override val id: String,
     override val name: String,
     override val visible: Boolean = true,

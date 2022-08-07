@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class GetFileRsp(
+internal data class GetFileResponse(
     val name: String,
     val lastModified: String,
     val thumbnailUrl: String,
@@ -22,7 +22,7 @@ data class GetFileRsp(
 )
 
 @Serializable
-data class Component(
+internal data class Component(
     val key: String,
     val name: String,
     val description: String,
@@ -31,7 +31,7 @@ data class Component(
 )
 
 @Serializable
-data class DocumentationLink(
+internal data class DocumentationLink(
     val uri: String,
 )
 
@@ -43,7 +43,7 @@ data class ComponentSet(
 )
 
 @Serializable
-data class Style(
+internal data class Style(
     val key: String,
     val name: String,
     val description: String,
@@ -51,7 +51,7 @@ data class Style(
     val styleType: StyleType? = null,
 )
 
-enum class StyleType {
+internal enum class StyleType {
     FILL,
     TEXT,
     EFFECT,
