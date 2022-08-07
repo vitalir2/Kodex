@@ -16,7 +16,7 @@ internal data class GetFileResponse(
     val components: Map<String, Component>,
     val componentSets: Map<String, ComponentSet>,
     val schemaVersion: Int,
-    val styles: Map<String, Style>,
+    val styles: Map<String, NodeStyle>,
     val mainFileKey: String = "",
     val branches: List<Node> = emptyList(),
 )
@@ -43,7 +43,7 @@ data class ComponentSet(
 )
 
 @Serializable
-internal data class Style(
+internal data class NodeStyle(
     val key: String,
     val name: String,
     val description: String,
