@@ -3,6 +3,7 @@ package io.vitalir.kodex.data.figma
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.nulls.shouldNotBeNull
+import io.vitalir.kodex.core.common.getEnv
 import io.vitalir.kodex.data.figma.network.GetFileRequest
 import io.vitalir.kodex.data.figma.network.GetFileResponse
 import io.vitalir.kodex.data.figma.network.GetFileStylesRequest
@@ -11,7 +12,6 @@ import io.vitalir.kodex.data.figma.network.common.NetworkDataSource
 import io.vitalir.kodex.data.figma.network.common.execute
 import io.vitalir.kodex.data.figma.network.extension.createFigmaExportHttpClient
 
-// TODO @vitalir: Get some variables from system env
 class FigmaDataSourceTest : StringSpec() {
 
     private val figmaTestData = getValidatedFigmaTestData()
@@ -48,18 +48,17 @@ private fun Result<*>.shouldBeSuccessful() {
 }
 
 private fun getValidatedFigmaTestData(): FigmaNetworkTestData {
-    check(FIGMA_TOKEN.isNotBlank()) { "You should set figma token" }
-    check(FIGMA_FILE_KEY.isNotBlank()) { "You should set file key" }
+    val figmaToken = getEnv("FIGMA_TOKEN")
+    val figmaFileKey = getEnv("FIGMA_FILE_KEY")
+    check(figmaToken != null) { "You should set figma token" }
+    check(figmaFileKey != null) { "You should set file key" }
     return FigmaNetworkTestData(
-            figmaToken = FIGMA_TOKEN,
-            fileKey = FIGMA_FILE_KEY,
-        )
+        figmaToken = figmaToken,
+        fileKey = figmaFileKey,
+    )
 }
 
 private data class FigmaNetworkTestData(
     val figmaToken: String,
     val fileKey: String,
 )
-
-private const val FIGMA_TOKEN = ""
-private const val FIGMA_FILE_KEY = ""
