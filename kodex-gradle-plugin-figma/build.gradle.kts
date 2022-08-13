@@ -25,6 +25,7 @@ gradlePlugin {
 
 dependencies {
     implementation(project(":kodex-data-figma"))
+    implementation(libs.kotlinx.coroutines.core)
     testImplementation(libs.kotest.runner.jvm)
     testImplementation(libs.kotest.framework)
     testImplementation(libs.kotest.assertions)

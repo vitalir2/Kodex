@@ -20,6 +20,7 @@ object VersionNames {
     const val kotestPlugin = "kotest-plugin"
     object Kotlinx {
         const val serialization = "kotlinx-serialization"
+        const val coroutines = "kotlinx-coroutines"
     }
 }
 
@@ -28,6 +29,7 @@ dependencyResolutionManagement {
         create("libs") {
             version(VersionNames.kotlin, "1.7.10")
             version(VersionNames.Kotlinx.serialization, "1.4.0-RC")
+            version(VersionNames.Kotlinx.coroutines, "1.6.4")
             version(VersionNames.ktor, "2.0.3")
             version(VersionNames.napier, "2.6.1")
 
@@ -48,6 +50,9 @@ dependencyResolutionManagement {
 
             alias("ktor-serialization-kotlinx-json").to("io.ktor", "ktor-serialization-kotlinx-json")
                 .versionRef(VersionNames.ktor)
+
+            alias("kotlinx-coroutines-core").to("org.jetbrains.kotlinx", "kotlinx-coroutines-core")
+                .versionRef(VersionNames.Kotlinx.coroutines)
 
             alias("napier").to("io.github.aakira", "napier")
                 .versionRef(VersionNames.napier)
