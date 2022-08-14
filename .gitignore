@@ -3,3 +3,6 @@ gradle/wrapper
 .idea
 gradlew
 gradlew.bat
+
+# Android
+local.properties

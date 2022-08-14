@@ -12,6 +12,8 @@ include(":kodex-gen-android")
 include(":kodex-manager")
 include(":kodex-core")
 
+include(":kodex-samples:figma-android")
+
 object VersionNames {
     const val kotlin = "kotlin"
     const val ktor = "ktor"
@@ -77,4 +79,12 @@ fun VersionCatalogBuilder.kotest() {
 
     alias("kotest-runner-jvm").to("io.kotest", "kotest-runner-junit5")
         .versionRef(VersionNames.kotest)
+}
+
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
 }
