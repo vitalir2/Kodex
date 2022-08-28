@@ -86,5 +86,10 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven {
+            url = uri("artifacts")
+        }
     }
+
+    includeBuild("build-logic")
 }

@@ -31,6 +31,6 @@ class KodexFigmaPlugin : Plugin<Project> {
     }
 
     companion object {
-        internal const val EXTENSION_NAME = "kodex-figma"
+        internal const val EXTENSION_NAME = "kodexFigma"
     }
 }
