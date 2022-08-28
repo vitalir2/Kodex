@@ -1,8 +1,7 @@
 plugins {
     kotlin("multiplatform")
+    id("packaging")
 }
-
-group = "io.vitalir"
 
 repositories {
     mavenCentral()

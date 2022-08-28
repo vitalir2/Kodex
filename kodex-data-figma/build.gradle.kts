@@ -4,9 +4,8 @@ plugins {
     kotlin("multiplatform")
     kotlin(libs.plugins.kotlinx.serialization.get().pluginId)
     id(libs.plugins.kotest.plugin.get().pluginId)
+    id("packaging")
 }
-
-group = "io.vitalir"
 
 repositories {
     mavenCentral()

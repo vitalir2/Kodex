@@ -5,10 +5,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `java-gradle-plugin`
     kotlin("jvm")
+    id("packaging")
 }
-
-group = "io.vitalir"
-version = "0.0.1-alpha"
 
 repositories {
     mavenCentral()
