@@ -6,7 +6,6 @@ import io.ktor.client.statement.*
 import io.ktor.http.*
 import kotlin.reflect.KClass
 
-// TODO @vitalir: Move to a common module
 class NetworkDataSource(
     private val client: HttpClient,
 ) {

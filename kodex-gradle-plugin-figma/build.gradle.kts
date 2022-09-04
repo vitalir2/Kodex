@@ -5,6 +5,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     `java-gradle-plugin`
     kotlin("jvm")
+    kotlin(libs.plugins.kotlinx.serialization.get().pluginId)
+    id(libs.plugins.kotest.plugin.get().pluginId)
     id("packaging")
 }
 
@@ -22,8 +24,13 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation(project(":kodex-data-figma"))
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.napier)
     testImplementation(libs.kotest.runner.jvm)
     testImplementation(libs.kotest.framework)
     testImplementation(libs.kotest.assertions)

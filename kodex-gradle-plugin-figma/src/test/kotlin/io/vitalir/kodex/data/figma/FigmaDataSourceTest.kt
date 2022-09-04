@@ -3,7 +3,7 @@ package io.vitalir.kodex.data.figma
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.booleans.shouldBeTrue
 import io.kotest.matchers.nulls.shouldNotBeNull
-import io.vitalir.kodex.core.common.getEnv
+import io.vitalir.kodex.core.getEnv
 import io.vitalir.kodex.data.figma.network.GetFileNodesRequest
 import io.vitalir.kodex.data.figma.network.GetFileNodesResponse
 import io.vitalir.kodex.data.figma.network.GetFileStylesRequest

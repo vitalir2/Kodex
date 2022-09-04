@@ -5,14 +5,8 @@ enableFeaturePreview("VERSION_CATALOGS")
 rootProject.name = "kodex"
 
 include(":kodex-gradle-plugin-figma")
-include(":kodex-data-api")
-include(":kodex-data-figma")
-include(":kodex-gen-api")
-include(":kodex-gen-android")
-include(":kodex-manager")
-include(":kodex-core")
 
-include(":kodex-samples:figma-android")
+//include(":kodex-samples:figma-android")
 
 object VersionNames {
     const val kotlin = "kotlin"
